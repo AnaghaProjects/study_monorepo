@@ -1,0 +1,60 @@
+---Using Bash Terminal
+00. Create Folder where mono-repo is to be created say "Study_MonoRepo"
+    Study_MonoRepo
+01. Install lerna in root-folder
+        /d/Anagha/Anagha Assignments/monorepo Lerna/Study_MonoRepo/ $npm i -D lerna
+02. Initialize lerna
+        /d/Anagha/Anagha Assignments/monorepo Lerna/Study_MonoRepo/ $npx lerna init
+03. Add version in package.json file as 
+        "version": "1.0.0",
+04. Update version in lerna.json file and also add packages
+        "version": "1.0.0",
+        "packages": [
+            "packages/*"
+        ]
+05. Create folder "server-api" under "packages" folder
+06. Create node project under server-api folder
+        /d/Anagha/Anagha Assignments/monorepo Lerna/Study_MonoRepo/packages/server-api $npm init --yes
+07. Create "index.js" file under "server-api" folder 
+08. Add dependancies for node applications like express server and body parser
+        /d/Anagha/Anagha Assignments/monorepo Lerna/Study_MonoRepo/packages/server-api $npm install express body-parser
+09. Write Basic code in server-api/index.js
+        const express = require("express");
+        const port = process.env.PORT || 5000;
+        const app = express();
+
+        app.get("/", (req, res) => {
+            res.send("I am a backend server");
+        });
+
+        app.listen(port, (err) => {
+            if(err) {
+                console.log(`Error: ${err.message}`);
+            } else {
+                console.log(`Listening on port ${port}`);
+            }
+        });
+10. create React project "web-client" under "packages" folder
+        /d/Anagha/Anagha Assignments/monorepo Lerna/Study_MonoRepo/packages $npx create-react-app web-client
+11. Installing package dependancies to root node_modules
+        /d/Anagha/Anagha Assignments/monorepo Lerna/Study_MonoRepo/packages/server-api $npx lerna bootstrap --hoist
+12. Add Some script in server-api/package.json
+        "scripts": {
+            "start": "node index.js",
+            "test": "echo testing Node Server"
+        },
+13. Update Some script in web-client/package.json
+        "scripts": {
+            "test": "echo testing React Server"
+        },
+14. Add Some script in package.json
+        "scripts": {
+            "start": "lerna run start",
+            "test": "lerna run test",
+            "new-version": "lerna version --conventional-commits --yes",
+            "diff": "lerna diff"
+        },
+15. Execute test script from both the packages
+         /d/Anagha/Anagha Assignments/monorepo Lerna/Study_MonoRepo $npm run test
+16. Start all the packages from root 
+        /d/Anagha/Anagha Assignments/monorepo Lerna/Study_MonoRepo $npm run start

@@ -1,0 +1,15 @@
+0 silly argv {
+0 silly argv   _: [ 'init' ],
+0 silly argv   lernaVersion: '6.6.2',
+0 silly argv   '$0': 'node_modules\\lerna\\dist\\cli.js'
+0 silly argv }
+1 notice cli v6.6.2
+2 verbose rootPath D:\Anagha\Anagha Assignments\monorepo Lerna\Study_MonoRepo
+3 verbose init skipping validations
+4 verbose init skipping preparations
+5 info Initializing Git repository
+6 error Error: Command failed with exit code 1: git init
+6 error 'git' is not recognized as an internal or external command,
+6 error operable program or batch file.
+6 error     at makeError (D:\Anagha\Anagha Assignments\monorepo Lerna\Study_MonoRepo\node_modules\execa\lib\error.js:59:11)
+6 error     at handlePromise (D:\Anagha\Anagha Assignments\monorepo Lerna\Study_MonoRepo\node_modules\execa\index.js:114:26)
